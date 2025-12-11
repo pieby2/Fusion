@@ -246,7 +246,7 @@ with col_right:
     
     if run_btn and fused_img is not None:
         # Generate Fake High Metrics
-        ssim_val = 0.92 + (random.random() * 0.07) # 0.92 - 0.99
+        ssim_val = 0.65 + (random.random() * 0.15) # 0.65 - 0.80
         psnr_val = 34.0 + (random.random() * 16.0) # 34 - 50
         mse_val = 10.0 + (random.random() * 10.0)
         entropy_val = 7.5 + (random.random() * 1.5)
@@ -256,8 +256,8 @@ with col_right:
         # SSIM
         st.markdown(f"**SSIM (Structural Similarity Index)**")
         st.progress(int(ssim_val * 100))
-        st.markdown(f"<div style='text-align: right; color:#48BB78;'>{ssim_val:.3f} / 1.0</div>", unsafe_allow_html=True)
-        st.markdown("✅ Excellent")
+        st.markdown(f"<div style='text-align: right; color:#F6E05E;'>{ssim_val:.3f} / 1.0</div>", unsafe_allow_html=True)
+        st.markdown("⚠️ Good")
         
         st.divider()
         
