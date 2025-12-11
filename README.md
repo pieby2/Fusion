@@ -5,7 +5,7 @@ A Streamlit-based web application for fusing **CT (Computed Tomography)** and **
 This app features a modern, dark-themed dashboard interface for visualizing medical image fusion results and quality metrics.
 
 ## 🌐 Live Demo
-👉 **[Try the Live App Here](https://panike.streamlit.app/)**
+👉 **[Try the Live App Here](https://imagefused.streamlit.app/)**
 
 ## ✨ Features
 
