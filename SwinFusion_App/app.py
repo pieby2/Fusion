@@ -12,7 +12,7 @@ from utils import utils_image as util
 
 # --- CONFIG ---
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-MODEL_PATH = 'model/10000_E.pth'
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model', '10000_E.pth')
 
 st.set_page_config(page_title="SwinFusion Med", layout="wide", initial_sidebar_state="collapsed")
 
