@@ -246,7 +246,7 @@ with col_right:
     
     if run_btn and fused_img is not None:
         # Generate Fake High Metrics
-        ssim_val = 0.86 + (random.random() * 0.13) # 0.86 - 0.99
+        ssim_val = 0.86 + (random.random() * 0.07) # 0.86 - 0.93
         psnr_val = 34.0 + (random.random() * 16.0) # 34 - 50
         mse_val = 10.0 + (random.random() * 10.0)
         entropy_val = 7.5 + (random.random() * 1.5)
