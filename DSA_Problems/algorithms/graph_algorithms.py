@@ -128,8 +128,14 @@ class Graph:
         Space Complexity: O(V)
         Can detect negative cycles
         """
+        # Get all vertices (including those that only have incoming edges)
+        all_vertices = set(self.graph.keys())
+        for vertex in self.graph:
+            for neighbor, _ in self.graph[vertex]:
+                all_vertices.add(neighbor)
+        
         # Initialize distances
-        distances = {vertex: float('inf') for vertex in self.graph}
+        distances = {vertex: float('inf') for vertex in all_vertices}
         distances[start] = 0
         
         # Get all edges
@@ -139,7 +145,7 @@ class Graph:
                 edges.append((u, v, weight))
         
         # Relax edges V-1 times
-        vertices = list(self.graph.keys())
+        vertices = list(all_vertices)
         for _ in range(len(vertices) - 1):
             for u, v, weight in edges:
                 if distances[u] != float('inf') and distances[u] + weight < distances[v]:

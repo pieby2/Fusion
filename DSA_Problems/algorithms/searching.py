@@ -2,6 +2,10 @@
 Searching Algorithms Implementation
 """
 
+import math
+import time
+import random
+
 
 def linear_search(arr, target):
     """
@@ -67,8 +71,6 @@ def jump_search(arr, target):
     Space Complexity: O(1)
     Works on: Sorted arrays only
     """
-    import math
-    
     n = len(arr)
     step = int(math.sqrt(n))
     prev = 0
@@ -225,9 +227,6 @@ if __name__ == "__main__":
     print(f"Binary Search: {result} (not found)")
     
     # Performance comparison
-    import time
-    import random
-    
     large_sorted_array = sorted([random.randint(1, 10000) for _ in range(10000)])
     search_target = large_sorted_array[len(large_sorted_array) // 2]
     

@@ -2,6 +2,9 @@
 Sorting Algorithms Implementation
 """
 
+import time
+import random
+
 
 def bubble_sort(arr):
     """
@@ -208,9 +211,6 @@ if __name__ == "__main__":
     print("Counting Sort: ", counting_sort(test_array))
     
     # Performance comparison with larger array
-    import time
-    import random
-    
     large_array = [random.randint(1, 1000) for _ in range(1000)]
     
     print("\n" + "=" * 50)

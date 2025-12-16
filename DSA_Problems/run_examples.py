@@ -5,6 +5,7 @@ This script demonstrates all implementations in the DSA_Problems package
 
 import sys
 import os
+import subprocess
 
 
 def run_module(module_path, module_name):
@@ -14,9 +15,13 @@ def run_module(module_path, module_name):
     print("=" * 70)
     
     try:
-        os.system(f"cd {os.path.dirname(os.path.abspath(__file__))} && python3 {module_path}")
-    except Exception as e:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        full_path = os.path.join(base_dir, module_path)
+        subprocess.run([sys.executable, full_path], cwd=base_dir, check=True)
+    except subprocess.CalledProcessError as e:
         print(f"Error running {module_name}: {e}")
+    except Exception as e:
+        print(f"Unexpected error running {module_name}: {e}")
 
 
 def main():
