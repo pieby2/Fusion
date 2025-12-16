@@ -97,7 +97,26 @@ st.markdown("""
 # --- HELPER FUNCTIONS ---
 @st.cache_resource
 def load_model():
-    """Load the SwinFusion model once and cache it."""
+    """Load the SwinFusion model once and cache it.
+    
+    ⚙️ FUSION ALGORITHM (F2A) SETTINGS:
+    To modify the fusion algorithm behavior, change the parameters below:
+    
+    - upscale: Upscale factor (1 for fusion, 2/4/8 for super-resolution)
+    - in_chans: Input channels (1 for grayscale, 3 for RGB)
+    - img_size: Input image size for model (default: 128)
+    - window_size: Window size for attention mechanism (default: 8)
+    - img_range: Image value range (1.0 for normalized [0,1])
+    - depths: Number of transformer blocks per stage [6, 6, 6, 6]
+    - embed_dim: Embedding dimension (default: 60)
+    - num_heads: Number of attention heads per stage [6, 6, 6, 6]
+    - mlp_ratio: MLP expansion ratio (default: 2)
+    - upsampler: Upsampling method (None for fusion)
+    - resi_connection: Residual connection type ('1conv')
+    
+    Note: After changing these settings, you must restart the Streamlit app
+    for the changes to take effect due to @st.cache_resource.
+    """
     try:
         model = net(upscale=1, in_chans=1, img_size=128, window_size=8,
                     img_range=1., depths=[6, 6, 6, 6], embed_dim=60, num_heads=[6, 6, 6, 6],
@@ -151,7 +170,8 @@ with col_left:
         
     st.divider()
     
-    # Settings (Dummy)
+    # Settings (UI Display Only - For demonstration purposes)
+    # Note: To change actual fusion algorithm (F2A) settings, see load_model() function above
     st.markdown("##### Fusion Method")
     method = st.radio("Fusion Method", 
                       ["Wavelet Transform", "PCA", "Laplacian Pyramid", "Hybrid (Proposed)"],
@@ -160,6 +180,7 @@ with col_left:
     with st.expander("Advanced Settings (Optional)"):
         st.slider("Fusion Strength", 0.0, 1.0, 0.8)
         st.checkbox("Noise Reduction", value=True)
+        st.caption("ℹ️ These UI settings are for display only. To modify actual fusion algorithm parameters, edit the load_model() function in app.py")
         
     st.markdown("<br>", unsafe_allow_html=True)
     
