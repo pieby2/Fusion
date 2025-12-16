@@ -61,7 +61,28 @@ SwinFusion_App/
 ├── model/                  # Pre-trained SwinFusion model weights
 ├── models/                 # Neural network architecture definitions
 └── utils/                  # Image processing utility functions
+
+DSA_Problems/
+├── data_structures/        # Data structure implementations (Stack, Queue, Trees, etc.)
+├── algorithms/             # Algorithm implementations (Sorting, Searching, Graphs)
+└── problems/               # Solutions to popular DSA problems
 ```
+
+## 📚 DSA Problems
+
+This repository also includes a comprehensive collection of **Data Structures and Algorithms** implementations and problem solutions. Perfect for:
+- 🎓 Learning fundamental data structures and algorithms
+- 💼 Interview preparation
+- 🧩 Practicing algorithmic problem-solving
+
+**Quick Start:**
+```bash
+cd DSA_Problems
+python3 data_structures/linked_list.py  # Run individual example
+python3 run_examples.py                 # Run all examples
+```
+
+📖 See [DSA_Problems/README.md](DSA_Problems/README.md) for detailed documentation and [INDEX.md](DSA_Problems/INDEX.md) for a complete catalog of all implementations.
 
 ## ℹ️ Disclaimer
 This application is for research and demonstration purposes. The quality metrics shown in the dashboard are currently simulated for UI demonstration purposes as Ground Truth data is rarely available in real-world clinical inference scenarios.
