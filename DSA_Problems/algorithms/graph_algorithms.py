@@ -92,7 +92,13 @@ class Graph:
         Space Complexity: O(V)
         Works on: Non-negative weighted graphs
         """
-        distances = {vertex: float('inf') for vertex in self.graph}
+        # Get all vertices by collecting keys and all neighbors
+        all_vertices = set(self.graph.keys())
+        for vertex in self.graph:
+            for neighbor, _ in self.graph[vertex]:
+                all_vertices.add(neighbor)
+        
+        distances = {vertex: float('inf') for vertex in all_vertices}
         distances[start] = 0
         
         pq = [(0, start)]  # (distance, vertex)
@@ -159,17 +165,18 @@ class Graph:
             visited.add(vertex)
             rec_stack.add(vertex)
             
-            for neighbor, _ in self.graph[vertex]:
-                if neighbor not in visited:
-                    if dfs_cycle(neighbor):
+            if vertex in self.graph:
+                for neighbor, _ in self.graph[vertex]:
+                    if neighbor not in visited:
+                        if dfs_cycle(neighbor):
+                            return True
+                    elif neighbor in rec_stack:
                         return True
-                elif neighbor in rec_stack:
-                    return True
             
             rec_stack.remove(vertex)
             return False
         
-        for vertex in self.graph:
+        for vertex in list(self.graph.keys()):
             if vertex not in visited:
                 if dfs_cycle(vertex):
                     return True
@@ -192,13 +199,14 @@ class Graph:
         def dfs_topological(vertex):
             visited.add(vertex)
             
-            for neighbor, _ in self.graph[vertex]:
-                if neighbor not in visited:
-                    dfs_topological(neighbor)
+            if vertex in self.graph:
+                for neighbor, _ in self.graph[vertex]:
+                    if neighbor not in visited:
+                        dfs_topological(neighbor)
             
             stack.append(vertex)
         
-        for vertex in self.graph:
+        for vertex in list(self.graph.keys()):
             if vertex not in visited:
                 dfs_topological(vertex)
         
