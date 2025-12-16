@@ -65,7 +65,7 @@ SwinFusion_App/
 
 ## ⚙️ Configuring Fusion Algorithm (F2A) Settings
 
-To modify the fusion algorithm parameters, edit the `load_model()` function in `SwinFusion_App/app.py` (around lines 102-104):
+To modify the fusion algorithm parameters, edit the `load_model()` function in `SwinFusion_App/app.py` (around lines 121-123):
 
 ```python
 model = net(upscale=1, in_chans=1, img_size=128, window_size=8,
@@ -75,12 +75,16 @@ model = net(upscale=1, in_chans=1, img_size=128, window_size=8,
 
 ### Key Parameters:
 *   **`upscale`**: Upscale factor (1 for fusion, 2/4/8 for super-resolution)
+*   **`in_chans`**: Input channels (1 for grayscale, 3 for RGB)
 *   **`img_size`**: Input image size for model (default: 128)
 *   **`window_size`**: Window size for Swin Transformer attention (default: 8)
+*   **`img_range`**: Image value range (1.0 for normalized [0,1])
 *   **`depths`**: Number of transformer blocks per stage (e.g., [6, 6, 6, 6])
 *   **`embed_dim`**: Embedding dimension (default: 60)
 *   **`num_heads`**: Number of attention heads per stage (e.g., [6, 6, 6, 6])
 *   **`mlp_ratio`**: MLP expansion ratio (default: 2)
+*   **`upsampler`**: Upsampling method (None for fusion, 'pixelshuffle' for SR)
+*   **`resi_connection`**: Residual connection type ('1conv' recommended)
 
 **Note**: After modifying these settings, restart the Streamlit app for changes to take effect.
 
